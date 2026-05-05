@@ -2,6 +2,7 @@
 
 Discordにアップされた画像を水槽の中の生き物として表示するWebサイトです。
 GitHub Pagesで無料公開できます。
+https://hiroton09.github.io/aqua-gallery/
 
 ---
 
