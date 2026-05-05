@@ -10,19 +10,21 @@
 }
 
 html, body {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: #04090f;
   color: #fff;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 24px 16px;
+  overflow-x: hidden;
 }
 
 /* ローディング表示 */
