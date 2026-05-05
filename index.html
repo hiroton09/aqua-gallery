@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./css/base.css" />
   <link rel="stylesheet" href="./css/tank.css" />
   <link rel="stylesheet" href="./css/card.css" />
+  <link rel="stylesheet" href="./css/guide.css" />
 </head>
 <body>
 
@@ -108,6 +109,40 @@
     </svg>
 
   </div><!-- /#tank -->
+
+  <section class="image-guide" aria-labelledby="image-guide-title">
+    <div class="guide-shell">
+      <p class="guide-label">IMAGE GUIDE</p>
+      <h1 id="image-guide-title">画像の追加・作成方法</h1>
+      <p class="guide-lead">
+        水槽に泳がせたい画像は、連番フォルダに表面と裏面の画像を入れて
+        creatures.json に登録すると追加できます。
+      </p>
+
+      <div class="guide-actions" aria-label="参考リンク">
+        <a class="guide-button" href="./README.md">追加手順を見る</a>
+        <a class="guide-button" href="./creatures.json">登録データを見る</a>
+      </div>
+
+      <div class="guide-grid">
+        <article class="guide-card">
+          <span class="guide-step">01</span>
+          <h2>フォルダを作る</h2>
+          <p>creatures/000007/ のように次の番号でフォルダを追加します。</p>
+        </article>
+        <article class="guide-card">
+          <span class="guide-step">02</span>
+          <h2>画像を入れる</h2>
+          <p>水槽で見せる画像は front.png、クリック後に見せる画像は back.png として保存します。</p>
+        </article>
+        <article class="guide-card">
+          <span class="guide-step">03</span>
+          <h2>JSON に登録</h2>
+          <p>id、discord_user、added_at を creatures.json に追加すると表示対象になります。</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <!-- JS：設定 → データ → カード → アニメーションの順に読み込む -->
   <script src="./js/config.js"></script>

@@ -54,12 +54,20 @@ function startBubbles(tank) {
 function startSwimming(cards, tank) {
   const BOTTOM_MARGIN = 108; // 砂利・水草エリアの高さ分
 
+  function getResponsiveScale(width) {
+    return Math.max(0.62, Math.min(1, width / 720));
+  }
+
   function animate(ts) {
     const W = tank.offsetWidth;
     const H = tank.offsetHeight;
+    const scale = getResponsiveScale(W);
+    const bottomMargin = BOTTOM_MARGIN * scale;
     const t = ts / 1000; // 秒換算
 
     cards.forEach((c) => {
+      const size = Math.round(c.size * scale);
+      const ringGap = Math.round(11 * scale);
       const freq = (2 * Math.PI) / c.period;
 
       // 主波（ゆっくりした正弦波） + ドリフト（さらに長い周期の揺れ）
@@ -74,15 +82,19 @@ function startSwimming(cards, tank) {
         Math.sin(c.driftY * t + c.driftPY) * 30;
 
       // 画面端・砂利エリアへはみ出さないようにクランプ
-      const lx = Math.max(0, Math.min(W - c.size, cx - c.size / 2));
-      const ly = Math.max(50, Math.min(H - c.size - BOTTOM_MARGIN, cy - c.size / 2));
+      const lx = Math.max(0, Math.min(W - size, cx - size / 2));
+      const ly = Math.max(50, Math.min(H - size - bottomMargin, cy - size / 2));
 
+      c._wrap.style.width  = size + 'px';
+      c._wrap.style.height = size + 'px';
       c._wrap.style.left = lx + 'px';
       c._wrap.style.top  = ly + 'px';
 
       // グロウリングはカードに追従
-      c._ring.style.left = (lx - 11) + 'px';
-      c._ring.style.top  = (ly - 11) + 'px';
+      c._ring.style.width  = (size + ringGap * 2) + 'px';
+      c._ring.style.height = (size + ringGap * 2) + 'px';
+      c._ring.style.left = (lx - ringGap) + 'px';
+      c._ring.style.top  = (ly - ringGap) + 'px';
     });
 
     requestAnimationFrame(animate);

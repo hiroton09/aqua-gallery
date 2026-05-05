@@ -1,0 +1,131 @@
+/*
+ * guide.css
+ * 画像追加・作成方法セクション
+ */
+
+.image-guide {
+  width: min(100%, 900px);
+  max-width: calc(100vw - 32px);
+  margin-top: 28px;
+  color: #17243a;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.56) 25%, transparent 25%) 0 0 / 34px 34px,
+    linear-gradient(135deg, transparent 75%, rgba(255, 255, 255, 0.56) 75%) 0 0 / 34px 34px,
+    linear-gradient(180deg, #fff7fb 0%, #f5fbff 100%);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.guide-shell {
+  width: 100%;
+  margin: 0 auto;
+  padding: 56px 28px 48px;
+  text-align: center;
+}
+
+.guide-label {
+  color: #2c64a0;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.image-guide h1 {
+  margin-top: 8px;
+  color: #2d66a1;
+  font-size: 34px;
+  line-height: 1.25;
+}
+
+.guide-lead {
+  max-width: 760px;
+  margin: 28px auto 0;
+  color: #1b1d24;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.85;
+}
+
+.guide-actions {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 34px;
+  flex-wrap: wrap;
+}
+
+.guide-button {
+  min-width: 230px;
+  padding: 17px 28px;
+  color: #fff;
+  background: #2da7da;
+  border: 5px solid rgba(255, 255, 255, 0.38);
+  border-radius: 999px;
+  box-shadow: 0 4px 0 rgba(32, 112, 160, 0.24);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.guide-button:hover {
+  background: #248fc7;
+}
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 48px;
+  text-align: left;
+}
+
+.guide-card {
+  min-height: 180px;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(70, 150, 200, 0.16);
+  border-radius: 8px;
+}
+
+.guide-step {
+  color: #2da7da;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.guide-card h2 {
+  margin-top: 8px;
+  color: #24364f;
+  font-size: 19px;
+  line-height: 1.4;
+}
+
+.guide-card p {
+  margin-top: 12px;
+  color: #34465d;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+@media (max-width: 720px) {
+  .guide-shell {
+    padding: 42px 18px 36px;
+  }
+
+  .image-guide h1 {
+    font-size: 28px;
+  }
+
+  .guide-lead {
+    font-size: 18px;
+  }
+
+  .guide-button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .guide-grid {
+    grid-template-columns: 1fr;
+  }
+}
