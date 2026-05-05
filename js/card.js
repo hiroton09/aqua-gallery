@@ -29,6 +29,11 @@ function createCard(creature, container) {
   frontImg.alt = `生き物 ${creature.id}`;
   frontImg.className = 'card-img';
 
+  // CONFIG.IMAGE_SCALE_FRONT の比率で枠より小さく表示
+  const scaleFront = Math.min(1, Math.max(0.1, CONFIG.IMAGE_SCALE_FRONT)) * 100;
+  frontImg.style.width  = scaleFront + '%';
+  frontImg.style.height = scaleFront + '%';
+
   // 画像読み込み失敗時のフォールバック（絵文字）
   frontImg.onerror = () => {
     frontImg.style.display = 'none';
@@ -47,6 +52,11 @@ function createCard(creature, container) {
   backImg.src = creature.backSrc;
   backImg.alt = `投稿者 ${creature.discord_user}`;
   backImg.className = 'card-img';
+
+  // CONFIG.IMAGE_SCALE_BACK の比率で枠より小さく表示
+  const scaleBack = Math.min(1, Math.max(0.1, CONFIG.IMAGE_SCALE_BACK)) * 100;
+  backImg.style.width  = scaleBack + '%';
+  backImg.style.height = scaleBack + '%';
 
   // 画像読み込み失敗時はアバター文字
   backImg.onerror = () => {
