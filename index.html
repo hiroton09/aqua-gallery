@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AQUA GALLERY</title>
+
+  <!-- スタイルシート -->
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/tank.css" />
+  <link rel="stylesheet" href="./css/card.css" />
+</head>
+<body>
+
+  <!-- 水槽本体 -->
+  <div id="tank">
+
+    <!-- ヘッダー -->
+    <div id="tank-header">
+      <span class="site-title">AQUA GALLERY</span>
+      <span class="hint-text">タップで投稿者を表示</span>
+    </div>
+
+    <!-- 光の筋 -->
+    <div class="ray" style="left:13%; --ra:-6deg; --ro:1;    animation-duration:7s;"></div>
+    <div class="ray" style="left:32%; --ra:2deg;  --ro:0.65; animation-duration:9s;  animation-delay:-3s;"></div>
+    <div class="ray" style="left:55%; --ra:-3deg; --ro:0.8;  animation-duration:8s;  animation-delay:-1.5s;"></div>
+    <div class="ray" style="left:76%; --ra:4deg;  --ro:0.55; animation-duration:11s; animation-delay:-5s;"></div>
+
+    <!-- 水面 -->
+    <div id="surface">
+      <svg width="100%" height="14" viewBox="0 0 700 14" preserveAspectRatio="none">
+        <path
+          d="M0 7 Q87 1 175 7 Q262 13 350 7 Q437 1 525 7 Q612 13 700 7 L700 14 L0 14Z"
+          fill="rgba(100,190,255,0.07)"
+          stroke="rgba(140,210,255,0.12)"
+          stroke-width="0.5"
+        />
+      </svg>
+    </div>
+
+    <!-- ローディング / エラー表示 -->
+    <div id="loading">読み込み中...</div>
+    <div id="error" class="hidden">データの読み込みに失敗しました</div>
+
+    <!-- 底砂 -->
+    <svg id="sand" width="100%" height="52" viewBox="0 0 700 52" preserveAspectRatio="none">
+      <path d="M0 18 Q60 12 120 18 Q180 24 240 16 Q300 10 360 18 Q420 24 480 16 Q540 10 600 18 Q650 22 700 16 L700 52 L0 52Z"
+        fill="#1a1208" opacity="0.95"/>
+      <path d="M0 24 Q80 18 160 24 Q240 30 320 22 Q400 16 480 24 Q560 30 640 22 Q670 20 700 24 L700 52 L0 52Z"
+        fill="#241808" opacity="0.9"/>
+      <circle cx="60"  cy="20" r="2"   fill="#3a2a10" opacity="0.8"/>
+      <circle cx="130" cy="22" r="1.5" fill="#4a3518" opacity="0.7"/>
+      <circle cx="200" cy="18" r="2.5" fill="#2e2010" opacity="0.75"/>
+      <circle cx="280" cy="22" r="1.5" fill="#3a2a10" opacity="0.8"/>
+      <circle cx="360" cy="19" r="2"   fill="#4a3518" opacity="0.7"/>
+      <circle cx="440" cy="23" r="1.5" fill="#2e2010" opacity="0.8"/>
+      <circle cx="510" cy="20" r="2"   fill="#3a2a10" opacity="0.75"/>
+      <circle cx="590" cy="21" r="2.5" fill="#4a3518" opacity="0.7"/>
+      <circle cx="640" cy="19" r="1.5" fill="#2e2010" opacity="0.8"/>
+      <circle cx="100" cy="26" r="1.5" fill="#3a2a10" opacity="0.6"/>
+      <circle cx="320" cy="27" r="1.5" fill="#4a3518" opacity="0.6"/>
+      <circle cx="530" cy="25" r="1.5" fill="#3a2a10" opacity="0.6"/>
+    </svg>
+
+    <!-- 水草・岩 -->
+    <svg id="plants" height="90" viewBox="0 0 700 90" preserveAspectRatio="none">
+      <!-- 左の水草 -->
+      <g opacity="0.85">
+        <path d="M55 90 Q48 65 38 45 Q30 28 42 12" fill="none" stroke="#1a4a20" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M55 90 Q62 60 70 42 Q78 26 66 10" fill="none" stroke="#1e5624" stroke-width="2"   stroke-linecap="round"/>
+        <path d="M55 90 Q50 72 44 58"               fill="none" stroke="#1a4a20" stroke-width="1.8" stroke-linecap="round"/>
+        <ellipse cx="38" cy="12" rx="9" ry="5" fill="#1e5624" transform="rotate(-20,38,12)" opacity="0.9"/>
+        <ellipse cx="66" cy="10" rx="8" ry="4" fill="#265e2a" transform="rotate(15,66,10)"  opacity="0.9"/>
+        <ellipse cx="44" cy="58" rx="6" ry="3" fill="#1a4a20" transform="rotate(-10,44,58)" opacity="0.8"/>
+      </g>
+      <!-- 中央左の水草 -->
+      <g opacity="0.75">
+        <path d="M210 90 Q205 68 200 50 Q195 35 204 20" fill="none" stroke="#154018" stroke-width="2"   stroke-linecap="round"/>
+        <path d="M210 90 Q216 70 220 54 Q224 38 215 22" fill="none" stroke="#1a4a1e" stroke-width="1.8" stroke-linecap="round"/>
+        <ellipse cx="203" cy="20" rx="7" ry="4" fill="#1a4a1e" transform="rotate(-15,203,20)" opacity="0.85"/>
+        <ellipse cx="215" cy="22" rx="7" ry="4" fill="#206028" transform="rotate(12,215,22)"  opacity="0.85"/>
+      </g>
+      <!-- 右の水草 -->
+      <g opacity="0.85">
+        <path d="M620 90 Q610 62 598 40 Q588 22 600 6" fill="none" stroke="#1a4a20" stroke-width="2.8" stroke-linecap="round"/>
+        <path d="M620 90 Q630 58 640 38 Q650 20 638 5" fill="none" stroke="#1e5624" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M620 90 Q615 74 610 60"               fill="none" stroke="#154018" stroke-width="1.8" stroke-linecap="round"/>
+        <ellipse cx="599" cy="6"  rx="10" ry="5" fill="#1e5624" transform="rotate(-18,599,6)"  opacity="0.9"/>
+        <ellipse cx="638" cy="5"  rx="9"  ry="5" fill="#265e2a" transform="rotate(14,638,5)"   opacity="0.9"/>
+        <ellipse cx="610" cy="60" rx="7"  ry="3" fill="#1a4a20" transform="rotate(-8,610,60)"  opacity="0.8"/>
+      </g>
+      <!-- 右寄りの細い草 -->
+      <g opacity="0.7">
+        <path d="M490 90 Q486 72 482 55 Q478 40 486 26" fill="none" stroke="#154018" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M490 90 Q494 70 498 54 Q502 40 494 28" fill="none" stroke="#1a4a1e" stroke-width="1.6" stroke-linecap="round"/>
+        <ellipse cx="484" cy="26" rx="6" ry="3" fill="#1a4a1e" transform="rotate(-12,484,26)" opacity="0.85"/>
+        <ellipse cx="494" cy="28" rx="6" ry="3" fill="#1e5624" transform="rotate(10,494,28)"  opacity="0.85"/>
+      </g>
+      <!-- 岩 -->
+      <ellipse cx="150" cy="82" rx="28" ry="12" fill="#1a1510" opacity="0.85"/>
+      <ellipse cx="145" cy="78" rx="18" ry="9"  fill="#221c12" opacity="0.9"/>
+      <ellipse cx="158" cy="80" rx="10" ry="7"  fill="#1a1510" opacity="0.75"/>
+      <ellipse cx="370" cy="84" rx="22" ry="9"  fill="#181310" opacity="0.8"/>
+      <ellipse cx="364" cy="80" rx="14" ry="8"  fill="#201a11" opacity="0.85"/>
+      <ellipse cx="560" cy="83" rx="24" ry="10" fill="#1a1510" opacity="0.8"/>
+      <ellipse cx="555" cy="79" rx="15" ry="8"  fill="#221c12" opacity="0.85"/>
+    </svg>
+
+  </div><!-- /#tank -->
+
+  <!-- JS：設定 → データ → カード → アニメーションの順に読み込む -->
+  <script src="./js/config.js"></script>
+  <script src="./js/loader.js"></script>
+  <script src="./js/card.js"></script>
+  <script src="./js/tank.js"></script>
+  <script>
+    (async () => {
+      const tank    = document.getElementById('tank');
+      const loading = document.getElementById('loading');
+      const error   = document.getElementById('error');
+
+      try {
+        // データ読み込み
+        const creatures = await loadCreatures();
+
+        // ローディング非表示
+        loading.classList.add('hidden');
+
+        // カード生成 → アニメーション開始
+        const cards = createAllCards(creatures, tank);
+        initTank(cards, tank);
+
+      } catch (e) {
+        console.error(e);
+        loading.classList.add('hidden');
+        error.classList.remove('hidden');
+      }
+    })();
+  </script>
+
+</body>
+</html>

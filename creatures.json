@@ -1,0 +1,32 @@
+[
+  {
+    "id": "000001",
+    "discord_user": "yuki_ocean",
+    "added_at": "2026-05-01"
+  },
+  {
+    "id": "000002",
+    "discord_user": "hiro_sea",
+    "added_at": "2026-05-02"
+  },
+  {
+    "id": "000003",
+    "discord_user": "tako_chan",
+    "added_at": "2026-05-03"
+  },
+  {
+    "id": "000004",
+    "discord_user": "tako_chan",
+    "added_at": "2026-05-03"
+  },
+  {
+    "id": "000005",
+    "discord_user": "tako_chan",
+    "added_at": "2026-05-04"
+  },
+  {
+    "id": "000006",
+    "discord_user": "test_user_000001",
+    "added_at": "2026-05-04"
+  }
+]

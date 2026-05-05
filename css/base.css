@@ -1,0 +1,60 @@
+/*
+ * base.css
+ * リセットと共通のベーススタイルを定義します。
+ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #04090f;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+/* ローディング表示 */
+#loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.35);
+  z-index: 50;
+  pointer-events: none;
+}
+
+#loading.hidden {
+  display: none;
+}
+
+/* エラー表示 */
+#error {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: rgba(255, 100, 100, 0.7);
+  z-index: 50;
+  pointer-events: none;
+}
+
+#error.hidden {
+  display: none;
+}
