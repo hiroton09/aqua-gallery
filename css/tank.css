@@ -24,8 +24,9 @@
 
 @media (max-width: 720px) {
   #tank {
-    height: 72vh;
-    min-height: 520px;
+    height: min(110vw, 68vh, 480px);
+    height: min(110vw, 68svh, 480px);
+    min-height: 340px;
   }
 }
 
