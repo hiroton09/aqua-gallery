@@ -2,6 +2,7 @@
 
 Discordにアップされた画像を水槽の中の生き物として表示するWebサイトです。
 GitHub Pagesで無料公開できます。
+https://hiroton09.github.io/aqua-gallery/
 
 ---
 
@@ -56,7 +57,7 @@ creatures.json の全データは削除されません。
 
 ```json
 {
-  "id": "004",
+  "id": "000004",
   "discord_user": "ユーザー名",
   "added_at": "2026-05-05"
 }
