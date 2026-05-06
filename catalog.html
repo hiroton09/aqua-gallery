@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>登録データ一覧 | AQUA GALLERY</title>
+
+  <link rel="stylesheet" href="./css/base.css" />
+  <link rel="stylesheet" href="./css/guide.css" />
+</head>
+<body class="catalog-page">
+
+  <main class="catalog-page-main">
+    <section id="creature-catalog" class="creature-catalog" aria-labelledby="creature-catalog-title">
+      <div class="catalog-shell">
+        <a class="catalog-back-link" href="./index.html">AQUA GALLERY に戻る</a>
+        <div class="catalog-heading">
+          <p class="catalog-label">CREATURE DATA</p>
+          <h1 id="creature-catalog-title">登録データ一覧</h1>
+          <p>creatures フォルダに格納されている画像と投稿者情報を確認できます。</p>
+        </div>
+        <div id="catalog-list" class="catalog-list" aria-live="polite">
+          <p class="catalog-loading">登録データを読み込み中...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./js/config.js"></script>
+  <script src="./js/loader.js"></script>
+  <script src="./js/catalog.js"></script>
+  <script>
+    (async () => {
+      const list = document.getElementById('catalog-list');
+
+      try {
+        const catalog = await loadCreatureCatalog();
+        renderCreatureCatalog(catalog, list);
+      } catch (e) {
+        console.error(e);
+        list.replaceChildren();
+        const error = document.createElement('p');
+        error.className = 'catalog-loading';
+        error.textContent = '登録データの読み込みに失敗しました';
+        list.appendChild(error);
+      }
+    })();
+  </script>
+
+</body>
+</html>

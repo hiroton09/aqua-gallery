@@ -14,32 +14,25 @@ function randBetween(min, max) {
   return min + Math.random() * (max - min);
 }
 
-/**
- * creatures.json を取得して表示用データを返す
- * @returns {Promise<Array>}
- */
-async function loadCreatures() {
-  const res = await fetch(CONFIG.DATA_PATH);
-  if (!res.ok) throw new Error('creatures.json の読み込みに失敗しました');
-
-  const all = await res.json();
-
-  // 追加日の新しい順にソート
-  const sorted = all
+function sortCreaturesByDate(items) {
+  return items
     .slice()
     .sort((a, b) => new Date(b.added_at) - new Date(a.added_at));
+}
 
-  // 上限件数に絞り込む
-  const limited = sorted.slice(0, CONFIG.DISPLAY_LIMIT);
+function addCreatureImagePaths(item) {
+  return {
+    ...item,
+    frontSrc: `${CONFIG.CREATURES_BASE}${item.id}/${CONFIG.FRONT_IMAGE}`,
+    backSrc:  `${CONFIG.CREATURES_BASE}${item.id}/${CONFIG.BACK_IMAGE}`,
+  };
+}
 
-  // アニメーション用パラメータを付与して返す
-  return limited.map((item) => {
+function createSwimmingCreatures(items) {
+  return items.map((item) => {
     const a = CONFIG.ANIMATION;
     return {
-      ...item,
-      // 画像パス
-      frontSrc: `${CONFIG.CREATURES_BASE}${item.id}/${CONFIG.FRONT_IMAGE}`,
-      backSrc:  `${CONFIG.CREATURES_BASE}${item.id}/${CONFIG.BACK_IMAGE}`,
+      ...addCreatureImagePaths(item),
 
       // カードサイズ
       size: Math.round(randBetween(a.SIZE_MIN, a.SIZE_MAX)),
@@ -58,4 +51,26 @@ async function loadCreatures() {
       driftPY: randBetween(0, Math.PI * 2),
     };
   });
+}
+
+async function loadCreatureCatalog() {
+  const res = await fetch(CONFIG.DATA_PATH);
+  if (!res.ok) throw new Error('creatures.json の読み込みに失敗しました');
+
+  const all = await res.json();
+  return sortCreaturesByDate(all).map(addCreatureImagePaths);
+}
+
+/**
+ * creatures.json を取得して表示用データを返す
+ * @returns {Promise<Array>}
+ */
+async function loadCreatures() {
+  const catalog = await loadCreatureCatalog();
+
+  // 上限件数に絞り込む
+  const limited = catalog.slice(0, CONFIG.DISPLAY_LIMIT);
+
+  // アニメーション用パラメータを付与して返す
+  return createSwimmingCreatures(limited);
 }
