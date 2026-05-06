@@ -5,7 +5,7 @@
  */
 const CONFIG = {
   // 表示する生き物の最大件数（新しい順に絞り込まれます）
-  DISPLAY_LIMIT: 10,
+  DISPLAY_LIMIT: 8,
 
   // creatures.json のパス
   DATA_PATH: './creatures.json',
