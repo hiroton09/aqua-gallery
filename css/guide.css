@@ -365,6 +365,8 @@
   }
 
   .catalog-meta {
+    grid-template-columns: auto auto;
+    gap: 8px 12px;
     justify-content: center;
   }
 }
